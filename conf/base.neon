@@ -7,18 +7,11 @@ parameters:
                 - '#Unknown PHPDoc tag: @phpstan-latte-component#'
                 - '#Unknown PHPDoc tag: @phpstan-latte-ignore#'
             reportUnmatched: false
-        -   # replacement for deprecated checkMissingIterableValueType: false
-            identifier: missingType.iterableValue
-            reportUnmatched: false
-        -   # replacement for deprecated checkGenericClassInNonGenericObjectType: false
-            identifier: missingType.generics
-            reportUnmatched: false
-        -
-            messages:
-                - '#magic number as a function argument#'
 
     customRulesetUsed: true
     inferPrivatePropertyTypeFromConstructor: true
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
     checkUninitializedProperties: true
     strictRules:
         # turn off strict rules
@@ -99,7 +92,7 @@ parameters:
 
 services:
     -
-        factory: PHPStanConfig\Rule\NotCMS\PluginPropertiesExtension
+        factory: Efabrica\PhpstanConfig\Rule\NotCMS\PluginPropertiesExtension
         tags:
             - phpstan.properties.readWriteExtension
 
@@ -110,4 +103,5 @@ includes:
     - ../../../spaze/phpstan-disallowed-calls/extension.neon
     - ../../../efabrica/phpstan-rules/extension.neon
     - ../../../efabrica/phpstan-rules/rules.neon
+    - ../../../efabrica/phpstan-latte/rules.neon
     - ../../../phpstan/phpstan-strict-rules/rules.neon
